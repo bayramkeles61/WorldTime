@@ -14,5 +14,6 @@
 </script>
 
 <template>
-	<div>Hello, {{ uppercase }}</div>
+	<div text="red-500 3xl" font-sans>Hello, {{ uppercase }}</div>
+	<div i-carbon-bee text-5xl text-yellow></div>
 </template>
