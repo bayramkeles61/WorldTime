@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	defineProps<{
+	const props = defineProps<{
 		name: string;
 	}>();
 
@@ -10,8 +10,9 @@
 	//! COMPUTED
 
 	//! CREATED
+	const uppercase = computed(() => props.name.toLocaleUpperCase());
 </script>
 
 <template>
-	<div>Hello, {{ name }}</div>
+	<div>Hello, {{ uppercase }}</div>
 </template>
