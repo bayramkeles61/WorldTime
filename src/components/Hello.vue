@@ -1,19 +1,19 @@
 <script setup lang="ts">
-	const props = defineProps<{
-		name: string;
-	}>();
+const props = defineProps<{
+  name: string;
+}>();
 
-	//! DATA
+//! DATA
 
-	//! METHODS
+//! METHODS
 
-	//! COMPUTED
+//! COMPUTED
 
-	//! CREATED
-	const uppercase = computed(() => props.name.toLocaleUpperCase());
+//! CREATED
+const uppercase = computed(() => props.name.toLocaleUpperCase());
 </script>
 
 <template>
-	<div text="red-500 3xl" font-sans>Hello, {{ uppercase }}</div>
-	<div i-carbon-bee text-5xl text-yellow></div>
+  <div text="red-500 3xl" font-sans>Hello, {{ uppercase }}</div>
+  <div i-carbon-bee text-5xl text-yellow></div>
 </template>
