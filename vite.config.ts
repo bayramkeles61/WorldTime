@@ -17,7 +17,8 @@ export default defineConfig({
     AutoImport({
       imports: [
         "vue",
-        "vue/macros"
+        "vue/macros",
+        "@vueuse/core"
       ],
       dirs: [
         "./src/composables",
@@ -25,6 +26,14 @@ export default defineConfig({
       vueTemplate: true,
     }),
     UnoCSS({
+      shortcuts: [
+        {
+          'border-base': 'border-gray/20 dark:border-gray/15',
+          'bg-base': 'bg-white dark:bg-[#1a1a1a]',
+          'bg-canvas': 'bg-gray:15 dark:bg-[#111]',
+          'icon-btn': 'op30 hover:op100',
+        }
+      ],
       presets: [
         presetUno(),
         presetAttributify(),
