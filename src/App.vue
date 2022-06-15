@@ -1,17 +1,8 @@
-<script setup lang="ts">
-import Hello from "./components/Hello.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <Hello name="Bayram" />
+  <div border="~ gray/20" m2>
+    <ActionBar />
+    <TimeSchedular />
   </div>
 </template>
-
-<style>
-/* html {
-		background: #222;
-		color: white;
-		color-scheme: dark;
-	} */
-</style>
