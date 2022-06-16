@@ -1,18 +1,9 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { zones } from "../composables/state";
-
-//! DATA
-
-//! METHODS
-
-//! COMPUTED
-
-//! CREATED
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div p4>
-    <pre> {{ zones }}</pre>
-  </div>
+	<div p4>
+		<div v-for="zone of zones.value" :key="zone.name" px4 py2 border="b base">
+			<TimezoneItem :timezone="zone" />
+		</div>
+	</div>
 </template>
