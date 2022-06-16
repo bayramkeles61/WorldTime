@@ -22,5 +22,6 @@
 			title="GitHub"
 		/>
 		<DarkSwitcher />
+		<BuyMeCoffee ml5 />
 	</div>
 </template>

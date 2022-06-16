@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ActionBar: typeof import('./src/components/ActionBar.vue')['default']
+    BuyMeCoffee: typeof import('./src/components/BuyMeCoffee.vue')['default']
     DarkSwitcher: typeof import('./src/components/DarkSwitcher.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     TimeSchedular: typeof import('./src/components/TimeSchedular.vue')['default']

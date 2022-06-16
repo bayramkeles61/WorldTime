@@ -18,8 +18,6 @@
 		index = 0;
 	}
 	function onKeyDown(e: KeyboardEvent) {
-		console.log({ key: e.key });
-
 		if (e.key === "ArrowDown") {
 			index = (index + 1) % searchResult.length;
 		} else if (e.key === "ArrowUp") {

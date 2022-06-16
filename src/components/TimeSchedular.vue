@@ -1,9 +1,56 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div p4>
-		<div v-for="zone of zones.value" :key="zone.name" px4 py2 border="b base">
-			<TimezoneItem :timezone="zone" />
+	<div relative select-none>
+		<div absolute left--6 top-0 bottom-0 flex="~ col">
+			<div
+				v-for="(zone, idx) of zones.value"
+				:key="zone.name"
+				flex="~col none"
+				text-xl
+				justify-center
+				items-center
+			>
+				<button
+					v-if="idx !== 0"
+					icon-btn
+					m--1px
+					i-ri-arrow-up-s-fill
+					title="Move up"
+					@click="moveZone(zone, -1)"
+				/>
+				<button
+					icon-btn
+					m--1px
+					i-ri-close-fill
+					title="Remove"
+					@click="removeZone(zone)"
+				/>
+				<button
+					icon-btn
+					m--1px
+					i-ri-home-2-fill
+					scale-75
+					title="Set to home zone"
+				/>
+				<button
+					v-if="idx !== zones.value.length - 1"
+					icon-btn
+					m--1px
+					i-ri-arrow-down-s-fill
+					title="Move down"
+					@click="moveZone(zone, +1)"
+				/>
+			</div>
 		</div>
+		<!-- <div of-x-auto of-visible relative>
+			<div v-for="zone of zones.value" :key="zone.name" border="b base">
+				<div flex="~ row" items-center w-max>
+					<TimezoneItem :timezone="zone" flex-none px3 />
+					<TimeDial :timezone="zone" />
+				</div>
+			</div>
+			<SelectionOverlay absolute inset-0 w-full />
+		</div> -->
 	</div>
 </template>
