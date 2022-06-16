@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div text-sans bg-gray:15 h-screen>
+	<div font-sans bg-canvas h-screen>
 		<NavBar />
-		<div border="~ base rounded" bg-white shadow mx8>
+		<div border="~ base rounded" bg-base shadow mx8>
 			<ActionBar />
 			<TimeSchedular />
 		</div>

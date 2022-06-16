@@ -10,7 +10,7 @@
 
 	let input = $ref("");
 	let index = $ref(0);
-	const searchResult = computed(() => {
+	const searchResult = $computed(() => {
 		return fuse.search(input);
 	});
 
@@ -19,6 +19,17 @@
 		input = "";
 		index = 0;
 	}
+	function onKeyDown(e: KeyboardEvent) {
+		console.log({ key: e.key });
+
+		if (e.key === "ArrowDown") {
+			index = (index + 1) % searchResult.length;
+		} else if (e.key === "ArrowUp") {
+			index = (index - 1 + searchResult.length) % searchResult.length;
+		} else if (e.key === "Enter") {
+			add(searchResult[index].item);
+		}
+	}
 </script>
 
 <template>
@@ -26,16 +37,17 @@
 		<input
 			v-model="input"
 			type="text"
-			class="border"
 			placeholder="Search timezone..."
 			p="x3 y2"
 			text-xl
 			border="~ base rounded"
 			bg-transparent
 			w-full
+			@keydown="onKeyDown"
 		/>
 		<div
 			v-show="input"
+			ref="modal"
 			absolute
 			top-full
 			left-0
@@ -59,12 +71,7 @@
 				:class="idx === index ? 'bg-gray:10' : ''"
 				@click="add(i.item)"
 			>
-				<div font-mono w-10 text-right>
-					{{ i.item.offset }}
-				</div>
-				<div>
-					{{ i.item.name }}
-				</div>
+				<TimezoneItem :timezone="i.item" />
 			</button>
 		</div>
 	</div>
