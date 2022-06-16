@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import "@unocss/reset/tailwind.css"
-import "uno.css"
+import { Icon } from "@iconify/vue";
+import 'virtual:windi.css'
+import "virtual:fonts.css";
 
-createApp(App).mount('#app')
+createApp(App).component("Icon", Icon).mount('#app')

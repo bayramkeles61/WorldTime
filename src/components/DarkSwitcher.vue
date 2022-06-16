@@ -1,18 +1,11 @@
 <script setup lang="ts">
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
-
-//! DATA
-
-//! METHODS
-
-//! COMPUTED
-
-//! CREATED
 </script>
 
 <template>
-  <button i-carbon-sun dark:i-carbon-moon @click="toggleDark()">
-    {{ isDark ? "Dark" : "Light" }}
+  <button @click="toggleDark()" class="opacity-30 hover:opacity-100">
+    <Icon v-if="isDark" icon="uil:sun" />
+    <Icon v-else icon="uil:moon" />
   </button>
 </template>

@@ -1,56 +1,49 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div relative select-none>
-		<div absolute left--6 top-0 bottom-0 flex="~ col">
-			<div
-				v-for="(zone, idx) of zones.value"
-				:key="zone.name"
-				flex="~col none"
-				text-xl
-				justify-center
-				items-center
-			>
-				<button
-					v-if="idx !== 0"
-					icon-btn
-					m--1px
-					i-ri-arrow-up-s-fill
-					title="Move up"
-					@click="moveZone(zone, -1)"
-				/>
-				<button
-					icon-btn
-					m--1px
-					i-ri-close-fill
-					title="Remove"
-					@click="removeZone(zone)"
-				/>
-				<button
-					icon-btn
-					m--1px
-					i-ri-home-2-fill
-					scale-75
-					title="Set to home zone"
-				/>
-				<button
-					v-if="idx !== zones.value.length - 1"
-					icon-btn
-					m--1px
-					i-ri-arrow-down-s-fill
-					title="Move down"
-					@click="moveZone(zone, +1)"
-				/>
-			</div>
-		</div>
-		<!-- <div of-x-auto of-visible relative>
-			<div v-for="zone of zones.value" :key="zone.name" border="b base">
-				<div flex="~ row" items-center w-max>
-					<TimezoneItem :timezone="zone" flex-none px3 />
-					<TimeDial :timezone="zone" />
-				</div>
-			</div>
-			<SelectionOverlay absolute inset-0 w-full />
-		</div> -->
-	</div>
+  <div>
+    <div>
+      <div
+        v-for="(zone, idx) of zones.value"
+        :key="zone.name"
+        class="relative border-b rounded px-4 py-2"
+      >
+        <TimezoneItem :timezone="zone">
+          <TimeDial :timezone="zone" />
+        </TimezoneItem>
+        <div class="-left-6 top-0 bottom-0 flex flex-col justify-center">
+          <button
+            v-if="idx !== 0"
+            icon-btn
+            title="Move up"
+            @click="moveZone(zone, -1)"
+            class="-m-1px opacity-30 hover:opacity-100"
+          >
+            <Icon icon="ri-arrow-up-s-fill" />
+          </button>
+          <button
+            title="Remove"
+            @click="removeZone(zone)"
+            class="-m-1px opacity-30 hover:opacity-100"
+          >
+            <Icon icon="i-ri-close-fill" />
+          </button>
+          <button
+            title="Set to home zone"
+            class="-m-1px opacity-30 hover:opacity-100 scale-75"
+          >
+            <Icon icon="i-ri-home-2-fill" />
+          </button>
+          <button
+            v-if="idx !== zones.value.length - 1"
+            title="Move down"
+            @click="moveZone(zone, +1)"
+            class="-m-1px opacity-30 hover:opacity-100"
+          >
+            <Icon icon=" i-ri-arrow-down-s-fill" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
