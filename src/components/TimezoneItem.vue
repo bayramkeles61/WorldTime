@@ -13,15 +13,17 @@ const formatter = new Intl.DateTimeFormat("en-US", {
 });
 const state = $computed(() => timezone.name.split("/")[0].replace(/_/g, ""));
 const city = $computed(() => timezone.name.split("/")[1]?.replace(/_/g, "") || "");
-const offset = $computed(() =>
-  timezone.offset > 0 ? `+${timezone.offset}` : `-${timezone.offset}`
+const offset = $computed(() => {
+  let offset = timezone.offset - currentOffset.value
+  return offset > 0 ? `+${offset}` : offset
+}
 );
 const time = $computed(() => formatter.format(now.value));
 </script>
 
 <template>
   <div class="flex flex-wrap items-center gap-3">
-    <div class="w-8 m-auto opacity-80 font-bold text-center">
+    <div :title="`${timezone.offset} GMT`" class="w-8 m-auto opacity-80 font-bold text-center">
       {{ offset }}
     </div>
     <div class="flex flex-col text-left flex-auto">

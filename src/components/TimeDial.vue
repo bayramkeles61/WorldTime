@@ -27,7 +27,7 @@ function isNight(h: number) {
 <template>
   <div class="flex gap-1 overflow-auto items-end">
     <template v-for="(day, idx) of days" :key="idx">
-      <div v-if="day.length" class="flex border dark:border-true-gray-700 rounded overflow-hidden">
+      <div v-if="day.length" class="flex flex-none border dark:border-true-gray-700 rounded overflow-hidden">
         <div v-for="i in day" :key="i" :class="[
           isMidnight(i) ? 'bg-sky-600 text-white dark:bg-slate-700'
             : isNight(i) ? 'bg-sky-100 dark:bg-sky-900'
