@@ -14,7 +14,7 @@
 
 <style>
 * {
-  font-family: "Georgia", "serif";
+  font-family: "Lobster Two";
 }
 .dark {
   color: white;

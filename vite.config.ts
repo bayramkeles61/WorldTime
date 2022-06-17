@@ -28,7 +28,7 @@ export default defineConfig({
     WindiCSS(),
     ViteFonts({
       google: {
-        families: ["Roboto", "Georgia"],
+        families: ["Philosopher",  "Lobster Two"],
       },
     })
   ]

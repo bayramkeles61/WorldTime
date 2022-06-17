@@ -1,44 +1,55 @@
 <script setup lang="ts">
 const top = $ref(0);
 const bottom = $ref(0);
-let leftEdge = $ref(300);
-let rightEdge = $ref(100);
-let left = $computed(() => Math.min(leftEdge, rightEdge));
-let right = $computed(() => Math.max(leftEdge, rightEdge));
+let edgeStart = $ref(0);
+let edgeEnd = $ref(0);
+const leftEdge = $computed(() => Math.min(edgeStart, edgeEnd));
+const rightEdge = $computed(() => Math.max(edgeStart, edgeEnd));
+const width = $computed(() => Math.abs(edgeStart - edgeEnd));
 
 const { pressed } = useMousePressed();
 const { x, y } = useMouse();
 const el = ref<HTMLElement>();
 const box = reactive(useElementBounding(el));
 
-useEventListener("mousedown", (e) => {
-  leftEdge = x.value - box.left;
-});
+function rounded(x: number) {
+  let n = Math.round(x / dayCellWidth);
+  n = Math.max(0, n);
+  n = Math.min(24, n);
+  return n * dayCellWidth;
+}
+
+whenever(
+  pressed,
+  (i) => {
+    edgeStart = rounded(x.value - box.left);
+    edgeEnd = edgeStart;
+  },
+  { flush: "sync" }
+);
 
 watchEffect(() => {
   if (!pressed.value) return;
-  const dx = x.value - box.left;
-  rightEdge = x.value - box.left;
+  edgeEnd = rounded(x.value - box.left);
 });
 
-const position = computed(() => ({
-  left: `${left}px`,
+const position = $computed(() => ({
+  left: `${leftEdge}px`,
   top: `${top}px`,
   bottom: `${bottom}px`,
-  width: `${right - left}px`,
+  width: `${width}px`,
 }));
-
-const leftWhiteout = computed(() => ({
+const leftWhiteout = $computed(() => ({
   left: "0",
   top: `${top}px`,
   bottom: `${bottom}px`,
-  width: `${left}px`,
+  width: `${leftEdge}px`,
 }));
-const rightWhiteout = computed(() => ({
+const rightWhiteout = $computed(() => ({
   right: "0",
   top: `${top}px`,
   bottom: `${bottom}px`,
-  left: `${right}px`,
+  left: `${rightEdge}px`,
 }));
 </script>
 
