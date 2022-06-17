@@ -13,26 +13,29 @@
         </TimezoneItem>
         <div class="absolute -left-6 top-0 bottom-0 flex flex-col justify-center">
           <button
+            v-if="homeZone.value !== zone.name"
+            title="Remove"
+            @click="removeZone(zone)"
+            class="-m-1px opacity-30 hover:opacity-100"
+          >
+            <Icon icon="ri-close-fill" />
+          </button>
+          <button
+            v-if="homeZone.value === zone.name"
+            title="Set to home zone"
+            @click="setHomeZone(zone)"
+            class="-m-1px opacity-30 hover:opacity-100 transform scale-75"
+          >
+            <Icon icon="ri:home-2-fill" />
+          </button>
+          <button
             v-if="idx !== 0"
             icon-btn
             title="Move up"
             @click="moveZone(zone, -1)"
             class="-m-1px opacity-30 hover:opacity-100"
           >
-            <Icon icon="ion:caret-up" />
-          </button>
-          <button
-            title="Remove"
-            @click="removeZone(zone)"
-            class="-m-1px opacity-30 hover:opacity-100"
-          >
-            <Icon icon="ion:close" />
-          </button>
-          <button
-            title="Set to home zone"
-            class="-m-1px opacity-30 hover:opacity-100 scale-75"
-          >
-            <Icon icon="ion:home" />
+            <Icon icon="ri-arrow-up-s-fill" />
           </button>
           <button
             v-if="idx !== zones.value.length - 1"
@@ -40,7 +43,7 @@
             @click="moveZone(zone, +1)"
             class="-m-1px opacity-30 hover:opacity-100"
           >
-            <Icon icon=" ion:caret-down" />
+            <Icon icon="ri-arrow-down-s-fill" />
           </button>
         </div>
       </div>

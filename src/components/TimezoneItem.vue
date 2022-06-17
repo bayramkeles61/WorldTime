@@ -14,22 +14,29 @@ const formatter = new Intl.DateTimeFormat("en-US", {
 const state = $computed(() => timezone.name.split("/")[0].replace(/_/g, ""));
 const city = $computed(() => timezone.name.split("/")[1]?.replace(/_/g, "") || "");
 const offset = $computed(() => {
-  let offset = timezone.offset - homeOffset.value
-  return offset > 0 ? `+${offset}` : offset
-}
-);
+  let offset = timezone.offset - homeOffset.value;
+  return offset > 0 ? `+${offset}` : offset;
+});
 const time = $computed(() => formatter.format(now.value));
 </script>
 
 <template>
   <div class="flex flex-wrap items-center gap-3">
-    <div :title="`${timezone.offset} GMT`" class="w-8 m-auto opacity-80 font-bold text-center">
-      {{ offset }}
+    <div
+      :title="`${timezone.offset} GMT`"
+      class="w-8 m-auto opacity-80 font-bold text-center"
+    >
+      <div v-if="timezone.name === homeZone.value" class="m-auto opacity-50">
+        <Icon icon="ri:home-2-fill" />
+      </div>
+      <div v-else>{{ offset }}</div>
     </div>
     <div class="flex flex-col text-left flex-auto">
       <div>
         {{ city }}
-        <sup class="border dark:border-true-gray-700 rounded px-1">{{ timezone.abbr }}</sup>
+        <sup class="border dark:border-true-gray-700 rounded px-1">{{
+          timezone.abbr
+        }}</sup>
       </div>
       <div class="text-sm opacity-50 leading-4">{{ state }}</div>
     </div>
