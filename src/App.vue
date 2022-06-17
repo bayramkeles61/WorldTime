@@ -14,7 +14,7 @@
 
 <style>
 * {
-  font-family: "Lobster Two";
+  font-family: "Philosopher";
 }
 .dark {
   color: white;
