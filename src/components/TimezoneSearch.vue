@@ -12,6 +12,15 @@ const searchResult = $computed(() => {
   return fuse.search(input);
 });
 
+const modal = ref<HTMLDivElement>();
+
+onClickOutside(modal, () => {
+  if (input) {
+    input = "";
+    index = 0;
+  }
+});
+
 function add(t: Timezone) {
   addToTimezone(t);
   input = "";
@@ -35,7 +44,7 @@ function onKeyDown(e: KeyboardEvent) {
       type="text"
       placeholder="Search timezone..."
       @keydown="onKeyDown"
-      class="w-full  rounded-lg bg-transparent text-xl px-3 py-2"
+      class="w-full rounded-lg bg-transparent text-xl px-3 py-2"
     />
     <div
       v-show="input"
@@ -54,4 +63,3 @@ function onKeyDown(e: KeyboardEvent) {
     </div>
   </div>
 </template>
-
