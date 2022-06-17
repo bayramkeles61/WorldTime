@@ -1,4 +1,4 @@
-import timezoneRaw from "timezones.json";
+import timezoneRaw from 'timezones.json'
 
 export const timezones = timezoneRaw.flatMap((i) => {
   return i.utc.map((u) => {
@@ -6,7 +6,7 @@ export const timezones = timezoneRaw.flatMap((i) => {
       name: u,
       offset: i.offset,
       isdst: i.isdst,
-      abbr: i.abbr
-    };
-  });
-});
+      abbr: i.abbr,
+    }
+  })
+})

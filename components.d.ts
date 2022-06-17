@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
     BuyMeCoffee: typeof import('./src/components/BuyMeCoffee.vue')['default']
     DarkSwitcher: typeof import('./src/components/DarkSwitcher.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    SelectionOverlay: typeof import('./src/components/SelectionOverlay.vue')['default']
+    SelectionOVerlay: typeof import('./src/components/SelectionOVerlay.vue')['default']
     TimeDial: typeof import('./src/components/TimeDial.vue')['default']
     TimeSchedular: typeof import('./src/components/TimeSchedular.vue')['default']
     TimezoneItem: typeof import('./src/components/TimezoneItem.vue')['default']

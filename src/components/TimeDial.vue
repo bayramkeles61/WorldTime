@@ -25,14 +25,24 @@ function isNight(h: number) {
 </script>
 
 <template>
-  <div class="flex gap-1 overflow-auto items-end">
+  <div class="time-dial select-none flex gap-1 overflow-auto items-end">
     <template v-for="(day, idx) of days" :key="idx">
-      <div v-if="day.length" class="flex flex-none border dark:border-true-gray-700 rounded overflow-hidden">
-        <div v-for="i in day" :key="i" :class="[
-          isMidnight(i) ? 'bg-sky-600 text-white dark:bg-slate-700'
-            : isNight(i) ? 'bg-sky-100 dark:bg-sky-900'
+      <div
+        v-if="day.length"
+        class="flex flex-none border dark:border-true-gray-700 rounded overflow-hidden"
+      >
+        <div
+          v-for="i in day"
+          :key="i"
+          :class="[
+            isMidnight(i)
+              ? 'bg-sky-600 text-white dark:bg-slate-700'
+              : isNight(i)
+              ? 'bg-sky-100 dark:bg-sky-900'
               : '',
-        ]" class="flex flex-col flex-none items-center justify-center w-8 h-8 p-0.5">
+          ]"
+          class="flex flex-col flex-none items-center justify-center w-8 h-8 p-0.5"
+        >
           <div v-if="i">
             {{ i }}
           </div>
