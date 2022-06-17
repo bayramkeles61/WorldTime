@@ -35,12 +35,12 @@ function onKeyDown(e: KeyboardEvent) {
       type="text"
       placeholder="Search timezone..."
       @keydown="onKeyDown"
-      class="w-full border rounded bg-transparent text-xl px-3 py-2"
+      class="w-full  rounded-lg bg-transparent text-xl px-3 py-2"
     />
     <div
       v-show="input"
       ref="modal"
-      class="absolute overflow-auto max-h-full bg-white dark:bg-gray-800 top-full left-0 right-0 z-10 border rounded-xl shadow-big"
+      class="absolute overflow-auto max-h-100 bg-white dark:bg-gray-800 top-full left-0 right-0 z-10 border rounded-xl shadow-big"
     >
       <button
         v-for="(i, idx) of searchResult"
@@ -54,3 +54,4 @@ function onKeyDown(e: KeyboardEvent) {
     </div>
   </div>
 </template>
+
